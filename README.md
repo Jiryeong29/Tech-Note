@@ -87,4 +87,4 @@ Garbage collection: Java는 가비지 컬렉션을 통한 자동 메모리 관�
 <h4>예시<h4/>
 정수 6개를 저장하는 배열 int[] a = new int[7]
 
-<h4>배열의 크기는 배열 객체의 length 필드에 저장<h/4>
+=> 배열의 크기는 배열 객체의 length 필드에 저장
