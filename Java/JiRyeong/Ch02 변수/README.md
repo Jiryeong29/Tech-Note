@@ -41,7 +41,7 @@
 
 ## 기본형과 참조형
 
-![Untitled]
+![Untitled](https://github.com/Jiryeong29/Tech-Study/blob/main/Java/JiRyeong/Img/01.png?raw=true)
 
 - 기본형(primitive type) : boolean, char, byte, short, int, long, float, double 모두 8개
 - 참조형(reference type) : 8개의 기본형을 제외한 나머지 타입, 객체의 주소를 저장함
@@ -185,7 +185,7 @@ n의 보수 : 더했을때 n이 되는 수
 
 ## 실수형의 저장형식
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2155be03-9542-4525-a50b-ebb2d7c2bf8e/Untitled.png)
+![Untitled](https://github.com/Jiryeong29/Tech-Study/blob/main/Java/JiRyeong/Img/02.png?raw=true)
 
 | 기호 | 의미 | 설명 |
 | --- | --- | --- |
