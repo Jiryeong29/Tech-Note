@@ -49,7 +49,7 @@ double a = 5; // double은 float의 두배의 크기를 가짐 2^8byte
   
 - **String**
   - char는 하나의 문자밖에 저장이 안된다 문자열을 저장하기 위해서는 String을 사용해야함
-  ``Java
+  ```Java
   char a = 'J'; //char a = "Java"를 하면 에러 하나의 문자밖에 저장이 안되기때문에
   String s = "Java" // OK
   String s = new String("Java") // String은 원래 클래스이기때문에 이와같이 선언해야하나 특별히 위에 방식도 허용
