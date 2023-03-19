@@ -124,4 +124,21 @@
   char c3 = c + 1; // 컴파일 에러
   char c3 = 'a' + 1; 컴파일 에러X, 리터럴 연산이기 때문에 실행과정동안 변하는 값이 아니기 때문에
   ```
-
+- **논리연산자**
+  - `||(OR결합)` 피연산자 중 어느 한 쪽만 true이면 true로 결과를 얻는다.
+  ```Java
+  int x = 5;
+  int y = 9;
+  if(x == 5 || x == 9) // true
+  if(x == 3 || x == 9) // true
+  if(x == 5 || x == 7) // true
+  if(x == 4 || x == 3) // false
+  ```
+  - `&&(AND)` 피연산자 양쪽 다 true여야지 true로 결과를 얻는다.
+  ```Java
+  int x = 5;
+  int y = 9;
+  if(x == 5 || x == 9) // true
+  if(x == 5 || x == 8) // false
+  if(x == 3 || x == 9) // false
+  ```
