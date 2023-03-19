@@ -55,6 +55,18 @@
   String s = new String("Java") // String은 원래 클래스이기때문에 이와같이 선언해야하나 특별히 위에 방식도 허용
   ```
 
+- **입출력**
+  - 입출력은 방식의 차이일뿐 대체로 유사하기때문에 코드로 대체
+  ```Java
+  int age = 14;
+  System.out.println("JAVA"); //Java 출력
+  System.out.println("%d", age); // 14출력
+  
+  Scanner scanner = new scanner(System.in);
+  String input = scanner.nextLine(); // 입력받은 문자열을 input에 저장
+  int n = Integer.parseInt(input); // 입력받은 문자열을 숫자로 변환
+  ```
+
  
 
   
