@@ -41,7 +41,7 @@
 
 ## 기본형과 참조형
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9fcb47e7-e809-4c55-a042-2178bd00724d/Untitled.png)
+![Untitled]
 
 - 기본형(primitive type) : boolean, char, byte, short, int, long, float, double 모두 8개
 - 참조형(reference type) : 8개의 기본형을 제외한 나머지 타입, 객체의 주소를 저장함
