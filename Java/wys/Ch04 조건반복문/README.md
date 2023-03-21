@@ -197,9 +197,13 @@
          }
              // break문이 없으므로 case 2와 case 1까지 수행되고 switch문을 빠져나온다.   
          ```    
-  * 반복문
-     * for문
-        *  
+* 반복문
+   * for문
+     ```
+     for(int i=1; i<5; i++) {
+         System.out.println("I can do it.");
+     }
+     ```
       
              
         
