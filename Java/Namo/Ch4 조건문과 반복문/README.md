@@ -6,6 +6,16 @@
 #### 조건문과 반복문
 
 - **if문**
-  -조건식이 참이면 실행 거짓이면 실행하지 않는다.
+  - 조건식이 참이면 실행 거짓이면 실행하지 않는다.
+  ```Java
+  int score = 60;
+  if(score == 60){
+   System.out.println("실행"); // 실행
+   }
+  if(score != 60){
+   System.out.println("실행 X");
+   }
+  ```
+
   
    
