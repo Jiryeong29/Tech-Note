@@ -134,7 +134,19 @@
       * 객체를 배열로 다루는 것을 말한다
       * 객체 배열 안에 객체가 저장되는 것이 아닌, 객체의 주소가 저장된다
       ```
+      Tv[] tvArr = new Tv[3];  // 참조변수 배열 (객체 배열)을 생성
       
+      //객체를 생성해서 배열의 각 요소에 저장
+      tvArr[0] = new Tv();
+      tvArr[1] = new Tv();
+      tvArr[2] = new Tv();
+      
+      //다뤄야 할 객체가 많은 경우에는 for문을 사용한다
+      Tv[] tvArr = new Tv[100];
+      for(int i=0; i<tvArr.length; i++) {
+          tvArr[i]=new Tv();
+      }
+      ```
         * 예제 6-4 P.242
         ```
         class TvTest4 {
