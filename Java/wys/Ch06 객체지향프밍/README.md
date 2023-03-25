@@ -270,4 +270,68 @@
               -변경사항이 발생했을때 이 메서드만 수정하면 되므로 관리도 쉽고 오류의 발생 가능성이 낮아짐   
           c) 프로그램의 구조화   
               -문장들을 작업단위로 나눠서 여러 개의 메서드에 담아 프로그램의 구조를 단순화 시키는것이 유리하다   
-          
+              
+       * 메서드의 선언부와 구현부
+       ```
+       반환타입 메서드이름 (타입 변수명, 타입 변수명, ... )   // 선언부
+       {
+            //메서드 호출시 수행될 코드  // 구현부
+       }
+       
+       int add (int a, b)
+       {
+            int result = a+b;
+            return result;   // 호출한 메서드로 결과를 반환한다
+       }
+       ```
+       * 메서드의 호출
+       ```
+       메서드이름 (값1, 값2, ...)  //메서드를 호출하는 방법
+       print99danAll ();         // void print99danAll() 을 호출
+       int result = add(3, 5);   // int add(int x, int y)를 호출하고, 결과는 result에 저장
+       ```
+       * 예제 6-6 P.256,257 <사칙연산을 위한 4개의 메서드가 정의되어 있는 MyMath 클래스를 이용한 예제>
+       ```
+       class MyMathTest {
+         public static void main (String args[]) {
+        MyMath mm = new MyMath();
+        long result1 = mm.add(5L, 3L);
+        long result2 = mm.subtract(5L, 3L);
+        long result3 = mm.multiply(5L, 3L);
+        double result4 = mm.divide(5L, 3L);
+
+        System.out.println("add(5L, 3L) = " + result1);
+        System.out.println("subtract(5L, 3L) = " + result2);
+        System.out.println("multiply(5L, 3L) = " + result3);
+        System.out.println("divide(5L, 3L) = " + result4);
+            }
+        }
+
+        class MyMath{
+         /*long add(long a, long b) {
+        long result = a+b;
+        return result;
+        // return a+b;
+            } */
+         long add(long a, long b) {return a+b;}
+         long subtract(long a, long b) {return a-b;}
+         long multiply(long a, long b) {return a*b;}
+         double divide(double a, double b) {return a/b;}
+         }
+       // 실행결과
+       add(5L, 3L) = 8
+       subtract(5L, 3L) = 2
+       multiply(5L, 3L) = 15
+       divide(5L, 3L) = 1.6666666666666667  
+       ```
+       
+       * return문
+          * 현재 실행중인 메서드를 종료하고 호출한 메서드로 되돌아간다
+          * 반환값의 유무에 관계없이 모든 메서드에는 적어도 하나의 return문이 있어야한다
+          * 반환 타입이 void일때는 생략가능하다 (컴파일러가 자동적으로 추가해주기 때문)
+       
+       * JVM의 메모리 구조
+       
+       
+           
+       
