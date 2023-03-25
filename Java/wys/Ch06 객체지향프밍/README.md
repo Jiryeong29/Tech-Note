@@ -208,4 +208,53 @@
        * 메서드가 종료되면 소멸하고, 블럭{}을 벗어나면 소멸한다
     * 6-5 P.248 <클래스변수와 인스턴스변수를 활용한 예제>
     ```
+    class CardTest {
+    public static void main (String args[]) {
+    
+    // 클래스 변수 (static)은 객체생성 없이 '클래스이름.클래스변수'로 직접 사용 가능하다
+        System.out.println("Card.width = " + Card.width);    
+        System.out.println("Card.height = " + Card.height);    
+
+        Card c1 = new Card();
+        c1.kind = "Heart";
+        c1.number = 7;
+
+    // 인스턴스변수의 값을 변경한다
+        Card c2 = new Card();
+        c2.kind = "spade";
+        c2.number = 4;
+
+        System.out.println("c1은 " + c1.kind + ", " + c1.number + "이며, 크기는 (" + c1.width + ", " + c1.height +")" );
+        System.out.println("c2은 " + c2.kind + ", " + c2.number + "이며, 크기는 (" + c2.width + ", " + c2.height +")" );
+        System.out.println("c1의 width와 height를 각각 50, 80으로 변경합니다.");
+        
+     // 클래스변수의 값을 변경한다
+        c1.width = 50;
+        c1.height = 80;
+
+        System.out.println("c1은 " + c1.kind + ", " + c1.number + "이며, 크기는 (" + c1.width + ", " + c1.height +")" );
+        System.out.println("c2은 " + c2.kind + ", " + c2.number + "이며, 크기는 (" + c2.width + ", " + c2.height +")" );
+        
+
+        
+            } 
+        }
+
+        class Card{
+         String kind;    
+         int number;
+         static int width = 100;
+         static int height = 250;
+        }
+        
+        // 실행결과
+        Card.width = 100
+        Card.height = 250
+        c1은 Heart, 7이며, 크기는 (100, 250)
+        c2은 spade, 4이며, 크기는 (100, 250)
+        c1의 width와 height를 각각 50, 80으로 변경합니다.
+        c1은 Heart, 7이며, 크기는 (50, 80)
+        c2은 spade, 4이며, 크기는 (50, 80)
+        ```
+        
     
