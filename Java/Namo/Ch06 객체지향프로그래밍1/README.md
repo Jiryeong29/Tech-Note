@@ -140,9 +140,62 @@
   - `지역변수` 메소드 내에 선언되어 메소드 내에서만 사용 가능 
   ```Java
   //6-5
+  public class CardTest {
+	public static void main(String[] args) {
+		System.out.println("Card.width = " + Card.width);
+		System.out.println("Card.heigth = " + Card.height);
+		
+		Card c1 = new Card();
+		c1.kind = "Heart";
+		c1.number = 7;
+		
+		Card c2 = new Card();
+		c2.kind = "Spade";
+		c2.number = 4;
+		
+		System.out.println("c1은" + c1.kind +"," + c1.number + "이며, 크기는 (" + c1.width + "," +c1.height +"))" );
+		System.out.println("c2은" + c2.kind +"," + c2.number + "이며, 크기는 (" + c2.width + "," +c2.height +"))" );
+		c1.width = 50;
+		c1.height = 80;
+		System.out.println("c1은" + c1.kind +"," + c1.number + "이며, 크기는 (" + c1.width + "," +c1.height +"))" );
+		System.out.println("c2은" + c2.kind +"," + c2.number + "이며, 크기는 (" + c2.width + "," +c2.height +"))" );
+	}
+
+}
+class Card{
+	String kind;
+	int number;
+	static int width = 100;
+	static int height = 250;
+	
+}
   ```
   ```Java
   //6-6
+  public class MymathTest {
+	public static void main(String args[]){
+		MyMath mm = new MyMath();
+		long result1 = mm.add(5L, 3L);
+		long result2 = mm.subtract(5L, 3L);
+		long result3 = mm.multiply(5L, 3L);
+		double result4 = mm.divide(5L, 3L);
+		
+		System.out.println("add(5L, 3L) = " + result1);
+		System.out.println("subtract(5L, 3L) = " + result2);
+		System.out.println("multiply(5L, 3L) = " + result3);
+		System.out.println("divide(5L, 3L) = " + result4);
+	}
+}
+class MyMath{
+	long add(long a, long b) {
+		long result = a+b;
+		return result;
+	}
+	long subtract(long a, long b) { return a- b;}
+	long multiply(long a, long b) { return a * b;}
+	long divide(long a, long b) { return a / b;}
+}
+
   ```
   - `반환값` return x + y; -> return 5 + 3; -> return 8;
 
@@ -152,9 +205,36 @@
   - `스택영역`
   ```Java
   //6-7
+  public class CallStackTest {
+	public static void main(String[] args){
+		firstMethod(); 
+	}
+	static void firstMethod() {secondMethod();}
+	static void secondMethod() {
+		System.out.println("secondMethod()");
+	}
+
+}
+
   ```
   ```Java
   //6-8
+  public class CallStackTest2 {
+	public static void main(String[] args) {
+		System.out.println("main(String[] args)이 시작되었습니다.");
+		firstMethod();
+		System.out.println("main(String[] args)이 시작되었습니다.");
+	}
+	static void firstMethod() {
+		System.out.println("firstMethod()이 시작되었음.");
+		secondMethod();
+		System.out.println("firstMethod()이 끝났음.");
+	}
+	static void secondMethod() {
+		System.out.println("secondMethod()이 시작되었음.");
+		System.out.println("secondMethod()이 시작되었음.");
+	}
+}
   ```
   
 - **참조형 매개변수**
@@ -162,9 +242,43 @@
   - `참조형 매개변수` read & write
   ```Java
   //6-9
+  package javatest;
+class Data { int x; }
+
+public class DataTest {
+	public static void main(String args[]) {
+		Data d = new Data();
+		d.x = 10;
+		System.out.println("main() : x =" + d.x);
+		change(d.x);
+		System.out.println("After change(d.x)");
+		System.out.println("main() : x =" + d.x);
+	}
+	static void change(int x) {
+		x = 1000;
+		System.out.println("change() : x = " + x );
+	}
+}
   ```
   ```Java
   //6-10
+  package javatest;
+class Data { int x; }
+
+public class DataTest2 {
+	public static void main(String args[]) {
+		Data d = new Data();
+		d.x = 10;
+		System.out.println("main() : x =" + d.x);
+		change(d);
+		System.out.println("After change(d.x)");
+		System.out.println("main() : x =" + d.x);
+	}
+	static void change(Data d) {
+		d.x = 1000;
+		System.out.println("change() : x = " + d.x );
+	}
+}
   ```
   ```Java
   //6-11
