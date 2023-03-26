@@ -561,8 +561,194 @@
           d.x =10
           d2.x =10
           ```
-          
-          
+   * 재귀호출(recursive call)
+      * 메서드의 내부에서 메서드 자신을 다시 호출하는 것 
+      ```
+      void method() {
+      method():   // 재귀호출, 메서드 자신을 호출한다
+      }
+      ```
+      * 예제 6-15 P.271
+      ```
+      class FactorialTest {
+      public static void main(String args[]) {
+        int result = factorial(4);
+        System.out.println(result);
+      }
+      static int factorial(int n) {
+        int result=0;
+        if(n==1)
+            result = 1;
+        else
+            result = n * factorial(n-1);
+            return result;
+         }
+      }
+      
+      // 실행결과
+      24
+      ```
+      * 예제 6-16 P.275
+      ```
+      class FactorialTest2 {
+      static long factorial(int n) {
+        if(n<=0 || n>20) return -1;
+        if(n<=1) return 1;
+        return n * factorial(n-1);
+         }
+         public static void main(String args[]) {
+        int n = 21;
+        long result = 0;
+        for(int i =1; i<=n; i++) {
+            result = factorial(i);
+            if(result == -1){
+                System.out.printf("유효하지 않은 값입니다.(0<ㅜ<=20):%d\n",n);
+                break;
+            }
+            System.out.printf("%2d!=%20d\n", i, result);
+            }
+         }
+      }
+      
+      // 실행결과
+      1!=                   1
+      2!=                   2
+      3!=                   6
+      4!=                  24
+      5!=                 120
+      6!=                 720
+      7!=                5040
+      8!=               40320
+      9!=              362880
+      10!=             3628800
+      11!=            39916800
+      12!=           479001600
+      13!=          6227020800
+      14!=         87178291200
+      15!=       1307674368000
+      16!=      20922789888000
+      17!=     355687428096000
+      18!=    6402373705728000
+      19!=  121645100408832000
+      20!= 2432902008176640000
+      유효하지 않은 값입니다.(0<ㅜ<=20):21
+      ```
+      
+      * 예제 6-17 P.276
+      class MainTest {
+      public static void main(String args[]){
+        main(null);   // 재귀호출. 자기 자신을 다시 호출한다
+         }
+      }
+      
+      // 실행결과
+      java.lang.StackoverflowError
+        at HelloTest.MainTest.main(HelloTest.java:4)
+        at HelloTest.MainTest.main(HelloTest.java:4)
+        at HelloTest.MainTest.main(HelloTest.java:4)
+      ```
+      
+      * 예제 6-18 P.276
+      ```
+      class PowerTest {
+         public static void main(String[] args) {
+        int x =2;
+        int n =5;
+        long result = 0;
+        for(int i=1; i<=n; i++) {
+            result += power(x, i);
+        }
+        System.out.println(result);
+         }
+      static long power(int x, int n) {
+        if(n==1) return x;
+        return x * power(x, n-1);
+         }
+      }
+      
+      // 실행결과
+      62
+      ```
+    
+      * 예제 6-19 P.279
+      ```
+      class MyMath2 {
+         long a, b;
+
+         long add()       { return a + b; }
+         long subtract()  { return a - b; }
+         long multiply()  { return a * b; }
+         long divide()    { return a / b; }
+
+         static long add(long a, long b) { return a + b; }
+         static long subtract(long a, long b) { return a - b; }
+         static long multiply(long a, long b) { return a / b; }
+         static double divide(double a, double b) {return a / b; }
+
+            }
+
+      class MyMathTest2 {
+         public static void main(String args[]) {
+        System.out.println (MyMath2.add(200L, 100L));
+        System.out.println (MyMath2.subtract(200L, 100L));
+        System.out.println (MyMath2.multiply(200L, 100L));
+        System.out.println (MyMath2.divide(200.0, 100.0));
+
+        MyMath2 mm = new MyMath2();
+        mm.a 200L;
+        mm.b 100L;
+
+        System.out.println (mm.add());
+        System.out.println (mm.subtract());
+        System.out.println (mm.multiply());
+        System.out.println (mm.divide());
+         }
+      }
+      
+      // 실행결과
+      300
+      100
+      20000
+      2.0
+      300
+      100
+      20000
+      2.0
+      ```
+      
+      * 예제 6-20 P.281
+      ```
+      class MemberCall {
+      int iv = 10;
+      static int cv = 20;
+
+      int iv2 = cv;
+      static int cv2 = iv;                        // 에러. 클래스변수는 인스턴스 변수를 사용할 수 없음
+      static int cv2 = new MemberCall().iv;       // 이처럼 객체를 생성해야 사용가능
+
+      static void staticMethod1() {
+        System.out.println(cv);
+        System.out.println(iv);                 // 에러. 클래스메서드에서 인스턴스변수를 사용불가
+        MemberCall c = new MemberCall();        
+        System.out.println(c.iv);               // 객체를 생성한 후에야 인스턴스변수의 참조가능
+      }
+      void instanceMethod1() {
+        System.out.println(cv);
+        System.out.println(iv);                 // 인스턴스메서드에서는 인스턴스변수를 바로 사용가능
+      }
+      static void staticMethod2() {
+        staticMethod1();
+        instanceMethod1();                      // 에러. 클래스메서드에서는 인스턴스메서드를 호출할 수 없음
+        MemberCall c = new MemberCall ();
+        c.intanceMethod1();                     // 인스턴스를 생성한 후에야 호출할 수 있음
+      }
+      void instanceMethod2() {                    // 인스턴스메서드에서는 인스턴스메서드와 클래스메서드
+        staticMethod1();                        // 모두 인스턴서 생성없이 바로 호출이 가능하다
+        instanceMethod1();
+         }
+      }
+      ```
+      
 
 
        
