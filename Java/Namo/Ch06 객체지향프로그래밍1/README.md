@@ -241,7 +241,6 @@ class MyMath{
   - `참조형 매개변수` read & write
   ```Java
   //6-9
-  package javatest;
 class Data { int x; }
 
 public class DataTest {
@@ -261,7 +260,6 @@ public class DataTest {
   ```
   ```Java
   //6-10
-  package javatest;
 class Data { int x; }
 
 public class DataTest2 {
