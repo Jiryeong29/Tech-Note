@@ -391,9 +391,127 @@
               main(String[] args)이 끝났음.
               ```
               
-                 
-                 
-              
+       * 기본형 매개변수: 변수의 값을 읽기만 할 수 있다.
+       * 참조형 매개변수: 변수의 값을 읽고 변경할 수 있다.
+          * 예제6-9 P.264 < 기본형 매개변수 >
+          ```
+          class Data {int x;}
+
+            class primitiveParamEX {
+            public static void main(String[] args) {
+            Data d = new Data();
+            d.x = 10;
+            System.out.println("main() : x = " + d.x);
+
+            change (d.x);
+            System.out.println("After change(d.x)");
+            System.out.println("main() : x = " + d.x);
+            }
+            static void change(int x) {
+            x=1000;
+            System.out.println("change() : x = " + x);
+               }
+          }  
+          // 실행결과
+          main() : x = 10
+          change() : x = 1000
+          After change(d.x)
+          main() : x = 10
+          ```
+          
+          * 예제 6-10 P.265 < 참조형 매개변수 >
+          ```
+          class Data {int x;}
+
+            class ReferenceParamEX {
+            public static void main(String[] args) {
+            Data d = new Data();
+            d.x = 10;
+            System.out.println("main() : x = " + d.x);
+
+            change (d);
+            System.out.println("After change(d.x)");
+            System.out.println("main() : x = " + d.x);
+            }
+            static void change(Data d) {
+            d.x = 1000;
+            System.out.println("change() : x = " + d.x);
+               }
+          }  
+          
+          // 실행결과    
+          main() : x = 10
+          change() : x = 1000
+          After change(d)
+          main() : x = 1000
+          ```
+          
+          * 예제 6-11 P.266
+          ```
+          class ReferenceParamEX2{
+            public static void main(String[] args){
+            int[] x = {10};   // 크기가 1인 배열. x[0] = 10;
+            System.out.println("main() : x = " + x[0]);
+
+            change(x);
+            System.out.println("After change(x)");
+            System.out.println("main() : x = " + x[0]);
+               }
+            static void change(int[] x){   // 참조형 매개변수
+            x[0] = 1000;
+            System.out.println("change() : x = " + x[0]);
+               }
+          }
+          
+          // 실행결과
+          main() : x = 10
+          change() : x = 1000
+          After change(x)
+          main() : x = 1000
+          ```
+          
+          * 예제 6-12 P.267 < 메서드로 배열을 다루는 여러 가지 방법을 보여주는 예제 >
+          ```
+          class ReferenceParamEX3 {
+            public static void main(String[] args) {
+               int[] arr = new int[] {3,2,1,6,5,4};
+
+               printArr(arr);
+               sortArr(arr);
+               printArr(arr);
+               System.out.println("sum=" + sumArr(arr));   // 배열의 총합을 출력
+               }
+            static void printArr(int[] arr) {   // 배열의 모든 요소를 출력
+               System.out.print("[");
+
+               for(int i : arr)
+               System.out.print(i+",");
+               System.out.println("]");
+               }
+            static int sumArr(int[] arr) {   // 배열의 모든 요소의 합을 반환
+               int sum = 0;
+
+               for(int i=0; i<arr.length; i++)
+               sum += arr[i];
+               return sum;
+               }
+            static void sortArr(int[] arr) {   // 배열을 오름차순으로 정렬
+               for(int i=0; i<arr.length-1; i++)
+                     for(int j=0; j<arr.length-1; i++)
+                        if(arr[j] > arr[j+1]) {
+                           int tmp = arr[j];
+                           arr[j] = arr[j+1];
+                           arr[j+1] = tmp;
+                     }
+               } 
+          }
+          
+          // 실행결과
+          {3,2,1,6,5,4}
+          {1,2,3,4,5,6}
+          sum=21
+          ```
+          
        
            
        
