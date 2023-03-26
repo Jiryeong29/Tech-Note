@@ -72,29 +72,7 @@
      }
    }
    ```
-   
-   ```
-    //예제 6-1
-  class TV {
-   // Tv의 속성(멤버변수)
-   String color;
-   boolean power;
-   int channel;
-   
-   //Tv의 기능(메소드
-   void power() { power = !power; }
-   void channelUP() { ++channel; }
-   void channelDown() { --channel; }
-   }
-   class TvTest {
-    public static void main(String args[]) {
-     Tv t;
-     t = new TV();
-     t.channel = 7;
-     t.channelDown();
-     }
-   }
-   ```
+  
    ```Java
    //6-3
    class TV {
@@ -123,7 +101,37 @@
    }
   ```
 
-- **클래스**
-  -  
+- **객체배열**
+  - `객체 배열` 많은 수의 객체를 다룰 때 배열로 다루면 편리하다. 객체 역시 배열로 다루는 것이 가능하며, 이를 '객체 배열'이라고 한다.
+  - `Tv tv1, tv2, tv3` -> `Tv[] tvArr = new Tv[3]`
+  -  모든 배열이 그렇듯이 객체 배열로 같은 타입의 객체만 저장할 수 있다.
+  ```Java
+  class TV {
+   // Tv의 속성(멤버변수)
+   String color;
+   boolean power;
+   int channel;
+   
+   //Tv의 기능(메소드
+   void power() { power = !power; }
+   void channelUP() { ++channel; }
+   void channelDown() { --channel; }
+   }
+   
+   class TvTest4 {
+   public static void main(String args[]) {
+    Tv[] tvArr = new Tv[3];
+    
+    for(int i = 0; i < tvArr.length; i++){
+     tvArr[i] = new Tv();
+     tvArr[i].channel = i+10;
+   }
+    for(int i = 0; i < tvArr.length; i++){
+     tvArr[i].channelUp();
+     System.out.printf("tvArr[%d].channel = %d%n", i, tvArr[i].channel);
+    }
+   }
+   ```
+   
  
   
