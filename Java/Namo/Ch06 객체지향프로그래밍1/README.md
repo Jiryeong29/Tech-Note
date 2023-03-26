@@ -195,7 +195,6 @@ class MyMath{
 	long multiply(long a, long b) { return a * b;}
 	long divide(long a, long b) { return a / b;}
 }
-
   ```
   - `반환값` return x + y; -> return 5 + 3; -> return 8;
 
