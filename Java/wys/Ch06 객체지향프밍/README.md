@@ -539,6 +539,7 @@
           ```
           
           * 예제 6-14 P.268
+          ```
           class Data { int x; }
             class ReferenceReturnEX {
             public static void main(String[] args) {
