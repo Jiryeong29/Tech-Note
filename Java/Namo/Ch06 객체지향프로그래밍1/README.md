@@ -16,4 +16,37 @@
     - `정의` 실제로 존재하는 것, 사물 또는 개념
     - `용도` 객체가 가지고 있는 기능과 속성에 따라 다름
   - 객체와 클래스의 차이점은 클래스가 "제품 설계도"이면 객체는 "제품"이다.
+
+- **객체의 구성요소**
+  - `속성` 멤버변수, 특성, 필드, 상태
+  - `기능` 메서드, 함수, 행위
+  - 객체의 TV 예시
+    - `속성` 크기, 길이, 높이, 색상, 볼륨, 채널 = int ch
+    - `기능` 켜기, 끄기, 볼륨 높이기, 볼륨 낮추기, 켜기 = chUp()
+  - 인스턴스의 생성과 사용 예제
+  ```Java
+  class TV {
+   // Tv의 속성(멤버변수)
+   String color;
+   boolean power;
+   int channel;
+   
+   //Tv의 기능(메소드
+   void power() { power = !power; }
+   void channelUP() { ++channel; }
+   void channelDown() { --channel; }
+   
+   class TvTest {
+    public static void main(String args[]) {
+     Tv t;
+     t = new TV();
+     t.channel = 7;
+     t.channelDown();
+     }
+   }
+   ```
+  
+  
+
+ 
   
