@@ -25,6 +25,7 @@
     - `기능` 켜기, 끄기, 볼륨 높이기, 볼륨 낮추기, 켜기 = chUp()
   - 인스턴스의 생성과 사용 예제
   ```Java
+  //예제 6-1
   class TV {
    // Tv의 속성(멤버변수)
    String color;
@@ -35,7 +36,7 @@
    void power() { power = !power; }
    void channelUP() { ++channel; }
    void channelDown() { --channel; }
-   
+   }
    class TvTest {
     public static void main(String args[]) {
      Tv t;
@@ -45,8 +46,84 @@
      }
    }
    ```
-  
-  
+   ```Java
+   //6-2
+   class TV {
+   // Tv의 속성(멤버변수)
+   String color;
+   boolean power;
+   int channel;
+   
+   //Tv의 기능(메소드
+   void power() { power = !power; }
+   void channelUP() { ++channel; }
+   void channelDown() { --channel; }
+   }
+   
+   class TvTest2 {
+    public static void main(String args[]) {
+     Tv t1;
+     t1 = new TV();
+     Tv t2 = new TV();
+     t1.channel = 7;
+     t.channelDown();
+     System.out.println("t1.channel의 채널은" + t1.channel + "입니다.") // 7출력
+     System.out.println("t2.channel의 채널은" + t2.channel + "입니다.") // 0출력
+     }
+   }
+   ```
+   
+   ```
+    //예제 6-1
+  class TV {
+   // Tv의 속성(멤버변수)
+   String color;
+   boolean power;
+   int channel;
+   
+   //Tv의 기능(메소드
+   void power() { power = !power; }
+   void channelUP() { ++channel; }
+   void channelDown() { --channel; }
+   }
+   class TvTest {
+    public static void main(String args[]) {
+     Tv t;
+     t = new TV();
+     t.channel = 7;
+     t.channelDown();
+     }
+   }
+   ```
+   ```Java
+   //6-3
+   class TV {
+   // Tv의 속성(멤버변수)
+   String color;
+   boolean power;
+   int channel;
+   
+   //Tv의 기능(메소드
+   void power() { power = !power; }
+   void channelUP() { ++channel; }
+   void channelDown() { --channel; }
+   }
+   
+   class TvTest3 {
+    public static void main(String args[]) {
+     Tv t1;
+     t1 = new TV();
+     Tv t2 = new TV();
+     t2 = t1 // ?? 주소라서 되는듯
+     t1.channel = 7;
+     t.channelDown();
+     System.out.println("t1.channel의 채널은" + t1.channel + "입니다.") // 7출력
+     System.out.println("t2.channel의 채널은" + t2.channel + "입니다.") // 7출력
+     }
+   }
+  ```
 
+- **클래스**
+  -  
  
   
