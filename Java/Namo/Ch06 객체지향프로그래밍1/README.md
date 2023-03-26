@@ -186,16 +186,16 @@
 		System.out.println("multiply(5L, 3L) = " + result3);
 		System.out.println("divide(5L, 3L) = " + result4);
 	}
-}
-class MyMath{
-	long add(long a, long b) {
+	}
+	class MyMath{
+		long add(long a, long b) {
 		long result = a+b;
 		return result;
+		}
+		long subtract(long a, long b) { return a- b;}
+		long multiply(long a, long b) { return a * b;}
+		long divide(long a, long b) { return a / b;}
 	}
-	long subtract(long a, long b) { return a- b;}
-	long multiply(long a, long b) { return a * b;}
-	long divide(long a, long b) { return a / b;}
-}
   ```
   
   - `반환값` return x + y; -> return 5 + 3; -> return 8;
@@ -235,7 +235,7 @@ class MyMath{
 		System.out.println("secondMethod()이 시작되었음.");
 		System.out.println("secondMethod()이 시작되었음.");
 	}
-}
+	}
   ```
   
 - **참조형 매개변수**
@@ -262,9 +262,9 @@ class MyMath{
   ```
   ```Java
   //6-10
-class Data { int x; }
+	class Data { int x; }
 
-public class DataTest2 {
+	public class DataTest2 {
 	public static void main(String args[]) {
 		Data d = new Data();
 		d.x = 10;
@@ -277,7 +277,7 @@ public class DataTest2 {
 		d.x = 1000;
 		System.out.println("change() : x = " + d.x );
 	}
-}
+	}
   ```
   ```Java
   //6-11
