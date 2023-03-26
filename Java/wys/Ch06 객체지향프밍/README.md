@@ -331,7 +331,69 @@
           * 반환 타입이 void일때는 생략가능하다 (컴파일러가 자동적으로 추가해주기 때문)
        
        * JVM의 메모리 구조
-       
+          * JVM은 시스템으로부터 프로그램을 수행하는데 필요한 메모리를 할당받고, JVM은 이 메모리를 용도에 따라 여러 영역으로 나누어 관리함
+          a) 메서드 영역(method area)
+             * 클래스 데이터를 이곳에 저장하고 그 클래스의 변수도 이 영역에 같이 저장한다
+          b) 힙(heap)
+             * 프로그램 실행 중 생성되는 인스턴스는 모두 이곳에 생성된다. (인스턴스변수)
+          c) 호출스택(call stack)
+             * 메서드 작업에 필요한 메모리 공간 제공
+             * 메서드가 작업을 수행하는 동안 직역변수(매개변수 포함) 들과 연산의 중간결과 등을 저장하는데 사용됨
+             * 메서드의 작업이 끝나면 할당되었던 메모리공강은 반환되어 비워진다
+             * 정리
+             ```
+             - 메서드가 호출되면 수행에 필요한 만큼의 메모리를 스택에 할당받는다.
+             - 메서드가 수행을 마치고나면 사용했던 메모리를 반환하고 스택에서 제거된다.
+             - 호출스택의 제일 위에 있는 메서드가 현재 실행 중인 메서드이다
+             - 아래에 있는 메서드가 바로 위의 메서드를 호출한 메서드이다
+             ```
+             * 예제 6-7 P.262 < 호출스택의 변화를 알아보는 예제 >
+             ```
+             class callstackTest {
+              public static void main (String [] args) {
+              firstMethod();  // static메서드는 객체 생성없이 호출가능하다
+              }
+              static void firstMethod() {
+               secondMethod();
+              }
+              static void secondMethod() {
+               System.out.println("secondMethod()");
+              }
+             }
+             // 실행결과
+             secondMethod()
+             ```
+             * 예제 6-8 P.263 < 출력문을 추가해서 각 메서드의 시작과 종료의 순서를 확인하는 예제>
+             ```
+             class CallstackTest2 {
+               public static void main(String[] args) {
+                  System.out.println("main(String[] args)이 시작되었음.");
+                  firstMethod();
+                  System.out.println("main(String[] args)이 끝났음.");
+                  }
+               static void firstMethod() {
+                  System.out.println("FirstMethod()이  시작되었음.");
+                  secondMethod();
+                  System.out.println("firstMethod()이 끝났음.");
+                  }
+               static void secondMethod() {
+                  System.out.println("secondMethod()이 시작되었음.");
+                  System.out.println("secondMethod()이 끝났음.");
+                  }
+              }
+              
+              // 실행결과
+              main(String[] args)이 시작되었음.
+              firstMethod()이 시작되었음.
+              secondMethod()이 시작되었음.
+              secondMethod()이 끝났음.
+              firstMethod()이 끝났음.
+              main(String[] args)이 끝났음.
+              ```
+              
+                 
+                 
+              
        
            
        
