@@ -161,14 +161,14 @@
       System.out.println("c2은" + c2.kind +"," + c2.number + "이며, 크기는 (" + c2.width + "," +c2.height +"))" );
    }
 
-}
-class Card{
-   String kind;
-   int number;
-   static int width = 100;
-   static int height = 250;
+	}
+	class Card{
+  	 String kind;
+   	int number;
+  	 static int width = 100;
+  	 static int height = 250;
    
-}
+	}
   ```
   
   ```Java
