@@ -331,16 +331,16 @@
           * 반환 타입이 void일때는 생략가능하다 (컴파일러가 자동적으로 추가해주기 때문)
        
        * JVM의 메모리 구조
-          * JVM은 시스템으로부터 프로그램을 수행하는데 필요한 메모리를 할당받고, JVM은 이 메모리를 용도에 따라 여러 영역으로 나누어 관리함
-          a) 메서드 영역(method area)
-             * 클래스 데이터를 이곳에 저장하고 그 클래스의 변수도 이 영역에 같이 저장한다
-          b) 힙(heap)
-             * 프로그램 실행 중 생성되는 인스턴스는 모두 이곳에 생성된다. (인스턴스변수)
-          c) 호출스택(call stack)
-             * 메서드 작업에 필요한 메모리 공간 제공
-             * 메서드가 작업을 수행하는 동안 직역변수(매개변수 포함) 들과 연산의 중간결과 등을 저장하는데 사용됨
-             * 메서드의 작업이 끝나면 할당되었던 메모리공강은 반환되어 비워진다
-             * 정리
+          * JVM은 시스템으로부터 프로그램을 수행하는데 필요한 메모리를 할당받고, JVM은 이 메모리를 용도에 따라 여러 영역으로 나누어 관리함   
+          a) 메서드 영역(method area)   
+             * 클래스 데이터를 이곳에 저장하고 그 클래스의 변수도 이 영역에 같이 저장한다   
+          b) 힙(heap)   
+             * 프로그램 실행 중 생성되는 인스턴스는 모두 이곳에 생성된다. (인스턴스변수)   
+          c) 호출스택(call stack)   
+             * 메서드 작업에 필요한 메모리 공간 제공   
+             * 메서드가 작업을 수행하는 동안 직역변수(매개변수 포함) 들과 연산의 중간결과 등을 저장하는데 사용됨   
+             * 메서드의 작업이 끝나면 할당되었던 메모리공강은 반환되어 비워진다    
+             * 정리   
              ```
              - 메서드가 호출되면 수행에 필요한 만큼의 메모리를 스택에 할당받는다.
              - 메서드가 수행을 마치고나면 사용했던 메모리를 반환하고 스택에서 제거된다.
@@ -512,6 +512,58 @@
           sum=21
           ```
           
+          * 예제 6-13 P.267, 268
+          ```
+          class ReturnTest {
+            public static void main (String[] args) {
+            ReturnTest r = new ReturnTest();
+
+            int result = r.add(3, 5);
+            System.out.println(result);
+
+            int[] result2 = {0};   // 배열을 생성하거 result[0] 의 값을 0으로 초기화
+            r.add(3,5,result2);   // 배열의 add메서드와 매개변수로 전달
+            System.out.println(result2[0]);
+               }
+            int add(int a, int b) {
+            return a + b;
+               }
+            void add(int a, int b, int[] result) {
+            result[0] = a+b;   // 매개변수로 넘겨받은 배열에 연산결과를 저장
+               }
+          }
+          
+          // 실행결과
+          8
+          8
+          ```
+          
+          * 예제 6-14 P.268
+          class Data { int x; }
+            class ReferenceReturnEX {
+            public static void main(String[] args) {
+            Data d = new Data();
+            d.x = 10;
+
+            Data d2 = copy(d);
+            System.out.println("d.x ="+d.x);
+            System.out.println("d2.x="+d2.x);
+            }
+            static Data copy(Data d) {
+            Data tmp = new Data();
+            tmp.x = d.x;
+            return tmp;
+            }
+          }
+          
+          // 실행결과
+          d.x =10
+          d2.x =10
+          ```
+          
+          
+
+
        
            
        
