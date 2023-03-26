@@ -1,3 +1,6 @@
+# Tech-Note
+📂엔지니어 기술 면접 스터디 - Java
+
 # ch06 상속
 ## Java에서의 상속에 대한 개념
 
@@ -8,7 +11,7 @@
 
 ```csharp
 
-HighClass와 Subclass는 각각 부모 클래스와 자 클래스
+HighClass와 Subclass는 각각 부모 클래스와 식식클래스
 
 class HighClass{
  // 부모 클래스에서 사용할 필드와 메소드를 정의
