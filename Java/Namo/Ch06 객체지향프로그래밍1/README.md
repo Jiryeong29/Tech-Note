@@ -281,12 +281,85 @@
   ```
   ```Java
   //6-11
+  class ReferenceParamEx2 {
+	public static void main(String[] args) 
+  	{
+		int[] x = {10};  // 크기가 1인 배열. x[0] = 10;
+		System.out.println("main() : x = " + x[0]);
+
+		change(x);
+		System.out.println("After change(x)");
+		System.out.println("main() : x = " + x[0]);
+	}
+
+	static void change(int[] x) { // 참조형 매개변수
+		x[0] = 1000;
+		System.out.println("change() : x = " + x[0]);
+	}
+	}
   ```
   ```Java
   //6-12
+  class ReferenceParamEx3 {
+	public static void main(String[] args) 
+	{
+		int[] arr = new int[] {3,2,1,6,5,4};
+
+		printArr(arr);  // 배열의 모든 요소를 출력
+		sortArr(arr);   // 배열을 정렬
+		printArr(arr);  // 정렬후 결과를 출력
+		System.out.println("sum="+sumArr(arr)); // 배열의 총합을 출력
+	}
+
+	static void printArr(int[] arr) {  // 배열의 모든 요소를 출력
+		System.out.print("[");
+
+		for(int i : arr)  // 향상된 for문
+			System.out.print(i+",");
+		System.out.println("]");
+	}
+
+	static int sumArr(int[] arr) {  // 배열의 모든 요소의 합을 반환
+		int sum = 0;
+
+		for(int i=0;i<arr.length;i++)
+			sum += arr[i];
+		return sum;
+	}
+
+	static void sortArr(int[] arr) {  // 배열을 오름차순으로 정렬
+		for(int i=0;i<arr.length-1;i++)
+			for(int j=0;j<arr.length-1-i;j++)
+				if(arr[j] > arr[j+1]) {
+					int tmp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = tmp;
+				}
+	} 
+	}
   ```
   ```Java
   //6-13
+  class ReturnTest {
+	public static void main(String[] args) {
+		ReturnTest r = new ReturnTest();
+
+		int result = r.add(3,5);
+		System.out.println(result);
+
+		int[] result2 = {0}; // 배열을 생성하고 result2[0]의 값을 0으로 초기화
+		r.add(3,5,result2);  // 배열을 add메서드의 매개변수로 전달
+		System.out.println(result2[0]);
+	}
+
+	int add(int a, int b) {
+		return a + b;
+	}
+
+	void add(int a, int b, int[] result) {
+		result[0] = a + b;  // 매개변수로 넘겨받은 배열에 연산결과를 저장
+	}
+	}
   ```
   
 - **참조형 반환타입**
@@ -295,6 +368,26 @@
   
   ```Java
   //6-14
+  class Data { int x; }
+
+	class ReferenceReturnEx {
+	public static void main(String[] args) 
+	{
+		Data d = new Data();
+		d.x = 10;
+
+		Data d2 = copy(d); 
+		System.out.println("d.x ="+d.x);
+		System.out.println("d2.x="+d2.x);
+	}
+
+	static Data copy(Data d) {
+		Data tmp = new Data();
+		tmp.x = d.x;
+
+		return tmp;
+	}
+	}
   ```
   
 - **재귀호출**
@@ -302,15 +395,76 @@
   - 대표적인 예로 팩토리얼이 있다.
   ```Java
   //6-15
+  class FactorialTest {
+	public static void main(String args[]) {
+		System.out.println(factorial(4)); // FactorialTest.factorial(4)
+	}
+
+	static long factorial(int n) {
+		long result=0;
+
+		if (n == 1) return 1;		
+
+		return n * factorial(n-1); // 다시 메서드 자신을 호출한다.
+	}
+	}
   ```
   ```Java
   //6-16
+  class FactorialTest2 {
+	static long factorial(int n) {
+		if(n<=0 || n>20) return -1;  // 매개변수의 유효성 검사.
+		if(n<=1) 
+			 return 1;
+	    return n * factorial(n-1); 
+	}
+
+	public static void main(String args[]) {
+		int  n = 21;
+		long result = 0;
+
+		for(int i = 1; i <= n; i++) {
+			result = factorial(i);
+
+			if(result==-1) {
+				System.out.printf("유효하지 않은 값입니다.(0<n<=20):%d%n", n);
+				break;
+			}
+
+			System.out.printf("%2d!=%20d%n", i, result);
+		}
+	} 
+	}
   ```
   ```Java
   //6-17
+  class MainTest {
+	public static void main(String args[]) {
+		main(null);		// 자기 자신을 다시 호출한다.
+	}
+	}
   ```
   ```Java
   //6-18
+  class PowerTest { 
+	public static void main(String[] args) { 
+		int x = 2; 
+		int n = 5; 
+		long result = 0; 
+
+		for(int i=1; i<=n; i++) { 
+			result += power(x, i); 
+		} 
+
+		System.out.println(result); 
+	} 
+
+	static long power(int x, int n) { 
+		if(n==1) return x; 
+
+		return x * power(x, n-1);
+	} 
+	}
   ```
 - **클랠스 메서드와 인스턴스 메서드**
   - 모든 인스터스에 공통으로 사용하는 것은 static을 붙인다.
@@ -319,7 +473,73 @@
   - 메소드 내에[서 인스턴스 변수를 사용하지 않는다면 static을 붙이는 것을 고려한다.
   ```Java
   //6-19
+  class MyMath2 {
+	long a, b;
+	
+	// 인스턴스변수 a, b만을 이용해서 작업하므로 매개변수가 필요없다.
+	long add() 	    { return a + b; }  // a, b는 인스턴스변수
+	long subtract() { return a - b; }
+	long multiply() { return a * b; }
+	double divide() { return a / b; }
+
+	// 인스턴스변수와 관계없이 매개변수만으로 작업이 가능하다.
+	static long   add(long a, long b) 	   	 { return a + b; } // a, b는 지역변수
+	static long   subtract(long a, long b)   { return a - b; }
+	static long   multiply(long a, long b)	 { return a * b; }
+	static double divide(double a, double b) { return a / b; }
+	}
+
+	class MyMathTest2 {
+	public static void main(String args[]) {
+		// 클래스메서드 호출. 인스턴스 생성없이 호출가능
+		System.out.println(MyMath2.add(200L, 100L));
+		System.out.println(MyMath2.subtract(200L, 100L));
+		System.out.println(MyMath2.multiply(200L, 100L));
+		System.out.println(MyMath2.divide(200.0, 100.0));
+
+		MyMath2 mm = new MyMath2(); // 인스턴스를 생성
+		mm.a = 200L;
+		mm.b = 100L;
+		// 인스턴스메서드는 객체생성 후에만 호출이 가능함.
+		System.out.println(mm.add());
+		System.out.println(mm.subtract());
+		System.out.println(mm.multiply());
+		System.out.println(mm.divide());
+	}
+	}
   ```
   ```Java
   //6-20
+  class MemberCall {
+	int iv = 10;
+	static int cv = 20;
+
+	int iv2 = cv;
+	//	static int cv2 = iv;		// 에러. 클래스변수는 인스턴스 변수를 사용할 수 없음.
+	static int cv2 = new MemberCall().iv;	 
+
+	static void staticMethod1() {
+		System.out.println(cv);
+	//		System.out.println(iv); // 에러. 클래스메서드에서 인스턴스변수를 사용불가.
+		MemberCall c = new MemberCall();	
+		System.out.println(c.iv);   
+	}
+
+	void instanceMethod1() {
+		System.out.println(cv);		
+		System.out.println(iv); 
+	}
+
+	static void staticMethod2() {
+		staticMethod1();
+	//		instanceMethod1(); // 에러. 
+		MemberCall c = new MemberCall();
+		c.instanceMethod1(); 
+ 		}
+	
+	void instanceMethod2() {	
+		staticMethod1();		
+		instanceMethod1();
+	}
+	}
   ```
