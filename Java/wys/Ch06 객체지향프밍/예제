@@ -78,4 +78,32 @@ class VarArgsEX {
 
 예제 6-23
 ```
+class Data1 {
+    int value;
+}
+class Data2{
+    int value;
+    Data(int x) {
+        value = x;
+    }
+}
+class constructorTest {
+    public static void main(String[] args) {
+        Data1 d1 = new Data1();
+        Data2 d2 = new Data2();
+    }
+}
+
+// 실행결과
+ConstructorTest.java:15: cannot resolve symbol
+symbol : constructor Data2 ()
+location: class Data2
+            Data2 d2 = enw Data2();
+^
+1 error
+```
+
+예제 6-24
+```
+
 
