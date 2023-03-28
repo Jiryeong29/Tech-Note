@@ -38,4 +38,14 @@ class MyMath3 {
         return result;
     }
 }
+
+// 실행결과 
+int add(int a, int b) - mm.add(3, 3) 결과:6
+long add(long a, int b) - mm.add(3L, 3) 결과:6
+long add(int a, long b) - mm.add(3, 3L) 결과:6
+long add(long a, long b) - mm.add(3L, 3L) 결과:6
+int add(int[] a) - mm.add(a) 결과:6
+```
+
+예제 6-22
 ```
