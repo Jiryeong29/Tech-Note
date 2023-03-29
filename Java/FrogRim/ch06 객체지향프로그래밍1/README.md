@@ -6,8 +6,8 @@
 - **[객체지향언어](#객체지향언어 )**   
 - **[클래스와 객체](#클래스와객체)**   
 - **[변수와 메서드](#변수와메서드)**
-- **[오버로딩(overloading)](#오버로딩(overloading))**   
-- **[생성자(constructor)](#생성자(constructor))**   
+- **[오버로딩(overloading)](#Overloading)**   
+- **[생성자(constructor)](#Constructor)**   
 - **[변수의 초기화](#변수의초기화)**
 
 
@@ -170,7 +170,7 @@ main() : x = 1000
  int result = new MemberCall().instanceMethod1();
 - 대신 참조변수를 선언하지 않았기에 생성된 MemberCall인스턴스는 더이상 사용할 수 없다.
  
-## #오버로딩(overloading) 
+## #Overloading 
   >### 한 클래스 내에 같은 이름의 메서드를 여러 개 정의하는 것
 ### 오버로딩의 조건
   ``1. 메서드의 이름이 같아야한다.``
@@ -232,7 +232,7 @@ System.out.println(concatenate(new String[]{"A","B"})); // 배열도 가능
 
 ```
 
-## #생성자(constructor)
+## #Constructor
 
 
 ### - 생성자란?
